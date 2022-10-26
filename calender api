@@ -1,0 +1,30 @@
+let data = async ()=>{
+    let api = 'https://date.nager.at/api/v3/publicholidays/2017/AT' 
+    let res = await fetch(
+        api,
+        {
+            method : 'GET',
+            Headers : {
+                'content-type' : 'application/json'
+                // 'X-eBirdApiToken': '{{x-ebirdapitoken}}'
+            }
+        }
+    )
+  console.log(res);
+  let out = await res.json();
+  console.log(out);
+  
+  for(let i of out){
+    let dataShow = i
+    console.log(dataShow);
+
+    var data_to_added = `
+    <p>${dataShow}</p>
+    `
+      var parent_variable = document.createElement("div")
+      parent_variable.innerHTML = data_to_added
+      document.body.append(parent_variable)
+  }
+
+}
+data();
